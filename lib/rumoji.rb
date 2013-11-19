@@ -9,7 +9,8 @@ module Rumoji
   # Transform emoji into its cheat-sheet code
   def encode(str)
     io = StringIO.new(str)
-    encode_io(io).string
+    str = encode_io(io).string
+    str.encode("UTF-8", "binary", :invalid => :replace, :undef => :replace)
   end
 
   # Transform a cheat-sheet code into an Emoji
